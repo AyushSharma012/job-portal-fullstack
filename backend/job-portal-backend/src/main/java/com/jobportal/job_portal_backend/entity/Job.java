@@ -16,13 +16,18 @@ public class Job {
 
     private String companyName;
 
-    public Job() {
-    }
+    private String salary;
 
-    public Job(Long id, String name, String companyName) {
+    private String location;
+
+    public Job() {}
+
+    public Job(Long id, String name, String companyName, String salary, String location) {
         this.id = id;
         this.name = name;
         this.companyName = companyName;
+        this.salary = salary;
+        this.location = location;
     }
 
     public Long getId() {
@@ -33,11 +38,11 @@ public class Job {
         this.id = id;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -47,5 +52,21 @@ public class Job {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
     }
 }

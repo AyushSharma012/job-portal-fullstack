@@ -2,6 +2,7 @@ package com.jobportal.job_portal_backend.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,13 +13,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jobportal.job_portal_backend.entity.Job;
+import com.jobportal.job_portal_backend.service.GreetingService;
 import com.jobportal.job_portal_backend.service.JobService;
 
-@RestController // defines that the created class is used for REST API implementation
+@RestController // defines that the created class is used for REST API implementation, this is also managed by IOC container
 @RequestMapping("/jobs") // connects requests to controller methods
 public class JobController {
 
-    private JobService jobService = new JobService();
+    @Autowired // used for DI, takes the bean from IOC container and injects it in the required class
+    private JobService jobService;
+
+    @Autowired
+    private GreetingService greetingService;
+
+    @GetMapping("/greet")
+    public String greet(){
+        return greetingService.greet();
+    }
 
     @PostMapping
     public String addJob(@RequestBody Job job){
